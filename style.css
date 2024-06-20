@@ -16,7 +16,7 @@
   --filter-img: rgba(255, 255, 255, 0.5);
 }
 
-.light{
+.light {
   --text-color: black;
   --bg-url: url(/assets/bg-mobile-light.jpg);
   --stroke-color: rgba(0, 0, 0, 0.5);
@@ -58,12 +58,12 @@ body * {
 
 /* PROFILE */
 
-#profile{
+#profile {
   text-align: center;
   padding: 24px;
 }
 
-#profile img{
+#profile img {
   width: 112px;
   filter: drop-shadow(3px 2px 3px var(--filter-img));
 }
@@ -80,19 +80,19 @@ body * {
 }
 
 @keyframes translateY {
-    from {
-        transform: translateY(0) scale(1);
-    }
-    to {
-        transform: translateY(-10px) scale(1.02);
-    }
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-10px) scale(1.02);
+  }
 }
 
 /* SWITCH */
 #switch {
   position: relative;
   width: 64px;
-  
+
   margin: 4px auto;
 }
 
@@ -104,27 +104,32 @@ body * {
   border-radius: 50%;
 
   cursor: pointer;
-  
+
   position: absolute;
   top: 50%;
   left: 0;
   z-index: 1;
   transform: translateY(-50%);
+
+  animation: slide-out 0.5s;
 }
 
-.light #switch button{
-  right: 0;
-  left: initial
+.light #switch button {
+  animation: slide-in 0.5s forwards; /* A propriedade 'forwards' mantém a configuração que faz a animação do botão no estado que ele estiver */
 }
 
-#switch span{
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+}
+
+#switch span {
   display: block;
-  
+
   width: 64px;
   height: 24px;
 
   border-radius: 9999px;
-  
+
   background: var(--surface-color);
   border: 1px solid var(--stroke-color);
   backdrop-filter: blur(4px);
@@ -156,7 +161,7 @@ ul li a {
 
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  
+
   font-weight: 500;
   text-decoration: none;
 
@@ -175,7 +180,7 @@ ul li a:hover {
   justify-content: space-evenly;
 
   padding: 24px 0;
-  
+
   font-size: 38px;
 }
 
@@ -223,5 +228,24 @@ footer span a:hover {
 
   .light {
     --bg-url: url(/assets/bg-desktop-light.jpg);
+  }
+}
+
+/* ANIMATION */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
